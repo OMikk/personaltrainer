@@ -1,7 +1,6 @@
 import React from 'react';
 import Customerlist from './Customerlist';
 import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Traininglist from './Traininglist';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 

@@ -1,12 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import ReactTable from 'react-table-6'
 import 'react-table-6/react-table.css'
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Addcustomer from './Addcustomer'
 
 export default function Customerlist() {
-    // const [customers, setCustomers] = useState([])
-    // const [trainings, setTrainings] = useState([])
+    
 
     const [customers, setCustomers] = useState([])
 
@@ -19,7 +17,18 @@ export default function Customerlist() {
             setCustomers(jsonData.content)
        })    
     }
-    
+
+    const saveCustomer = (customer) => {
+        fetch('https://customerrest.herokuapp.com/api/customers', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        }, 
+        body: JSON.stringify(customer)  
+    })
+    .then(res => fetchData)
+    .catch(err => console.error(err))
+    }
     
     const columns = [
         {
@@ -58,6 +67,7 @@ export default function Customerlist() {
         <div>
             
             <h1>Customers</h1>
+            <Addcustomer saveCustomer={saveCustomer}/>
             <ReactTable filterable data={customers} columns={columns}/>
         </div>
 

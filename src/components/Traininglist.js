@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import ReactTable from 'react-table-6'
 import 'react-table-6/react-table.css'
-import AppBar from '@material-ui/core/AppBar';
+import Addtraining from './Addtraining'
 
 export default function Traininglist() {
     const [trainings, setTrainings] = useState([])
@@ -38,6 +38,7 @@ export default function Traininglist() {
     return (
         <div>
             <h1>Trainings</h1>
+            <Addtraining/>
             <ReactTable filterable data={trainings} columns={columns}/>
         </div>
 
